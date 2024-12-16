@@ -429,7 +429,7 @@ class GPUDriveTorchEnv(GPUDriveGymEnv):
         )
 
         if self.config.dynamics_model == "delta_local":
-            inferred_actions = log_trajectory.inferred_actions[:, :3]
+            inferred_actions = log_trajectory.inferred_actions[..., :3]
             inferred_actions[..., 0] = torch.clamp(
                 inferred_actions[..., 0], -6, 6
             )
